@@ -35,8 +35,10 @@ class Square {
     this.marked = false;
   }
   mark(){
-    this.marked = true;
-    console.log(this.marked)
+    const status = this.marked;
+    this.marked = !status;
+    console.log()
+    return status;
   }
   render(){
     const mark = this.mark.bind(this);
@@ -44,8 +46,8 @@ class Square {
     square.className = !this.marked ? 'bingoSquare' : "bingoSquare--marked";
     square.innerText = this.text;
     square.addEventListener('click', function(){
-      this.className = "bingoSquare--marked";
-      mark();
+      const status = mark();
+      this.className = status ? "bingoSquare" : "bingoSquare--marked";
     })
     return square;
   }
