@@ -1,0 +1,37 @@
+.bingoCard {
+  display: flex;
+  flex-direction: row;
+}
+
+.bingoColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.bingoSquare {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aquamarine;
+  color: teal;
+  font-size: 30px;
+  padding: 5px;
+  margin: 2px;
+  border: 2px solid lightseagreen;
+  height: 50px;
+  width: 50px;
+}
+
+.bingoSquare--marked {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: teal;
+  color: aquamarine;
+  font-size: 30px;
+  padding: 5px;
+  margin: 2px;
+  border: 2px solid lightseagreen;
+  height: 50px;
+  width: 50px;
+}
