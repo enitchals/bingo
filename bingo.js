@@ -7,18 +7,25 @@ class Card {
       .concat([new FreeSpace(freeSpaceText)])
       .concat(squares.slice(12,24));
   }
+
   render(){
     const squareElements = this.squares.map(s => s.render());
-    const B = document.querySelector('#B');
-    B.replaceChildren(...squareElements.slice(0,5));
-    const I = document.querySelector('#I');
-    I.replaceChildren(...squareElements.slice(5,10));
-    const N = document.querySelector('#N');
-    N.replaceChildren(...squareElements.slice(10,15));
-    const G = document.querySelector('#G');
-    G.replaceChildren(...squareElements.slice(15,20));
-    const O = document.querySelector('#O');
-    O.replaceChildren(...squareElements.slice(20));
+    const columns = [
+      squareElements.slice(0,5),
+      squareElements.slice(5,10),
+      squareElements.slice(10,15),
+      squareElements.slice(15,20),
+      squareElements.slice(20)
+    ];
+    const card = document.createElement('section');
+    card.className = 'bingoCard';
+    columns.forEach(col => {
+      const colElement = document.createElement('section');
+      colElement.className = 'bingoColumn';
+      colElement.append(...col)
+      card.append(colElement);
+    })
+    return card;
   }
 }
 
