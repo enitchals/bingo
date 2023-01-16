@@ -3,17 +3,25 @@ const promptInput = document.querySelector('#prompt-input');
 const list = document.querySelector('#prompt-list');
 const makeTemplateButton = document.querySelector('#make-template');
 
-const prompts = [];
+let prompts = [];
 
 const renderList = () => {
-  const promptElements = prompts.map(prompt => {
-    const promptEl = document.createElement('span');
-    promptEl.className = 'prompt';
-    promptEl.innerText = prompt;
-    return promptEl;
-  })
-  list.replaceChildren(...promptElements);
+  list.replaceChildren(...prompts.map(renderPrompt));
+}
 
+const renderPrompt = (prompt) => {
+  const promptEl = document.createElement('li');
+  promptEl.className = 'prompt';
+  const promptText = document.createElement('span');
+  promptText.innerText = prompt;
+  const deleteButton = document.createElement('button');
+  deleteButton.addEventListener('click', () => {
+    prompts = prompts.filter(p => p !== prompt);
+    renderList();
+  });
+  deleteButton.innerText = 'X'
+  promptEl.append(deleteButton, promptText);
+  return promptEl;
 }
 
 function addPrompt(){
