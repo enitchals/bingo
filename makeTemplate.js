@@ -1,7 +1,18 @@
 const titleInput = document.querySelector('#prompt-input');
 const promptInput = document.querySelector('#prompt-input');
+const templateList = document.querySelector('#existingTemplates');
 const list = document.querySelector('#prompt-list');
 const makeTemplateButton = document.querySelector('#make-template');
+
+const makeButton = (text, callback, buttonClass) => {
+  const button = document.createElement('button');
+  button.innerText = text;
+  button.addEventListener('click', callback);
+  button.className = buttonClass;
+  return button;
+}
+
+templateList.append(...promptOptions.map(option => makeButton(option.buttonText, () => pickTemplate(option.array))))
 
 let prompts = [];
 
@@ -9,17 +20,17 @@ const renderList = () => {
   list.replaceChildren(...prompts.map(renderPrompt));
 }
 
+const removeItemFromPrompts = (item) => {
+  prompts = prompts.filter(p => p !== item);
+  renderList();
+}
+
 const renderPrompt = (prompt) => {
-  const promptEl = document.createElement('li');
+  const promptEl = document.createElement('section');
   promptEl.className = 'prompt';
-  const promptText = document.createElement('span');
+  const promptText = document.createElement('li');
   promptText.innerText = prompt;
-  const deleteButton = document.createElement('button');
-  deleteButton.addEventListener('click', () => {
-    prompts = prompts.filter(p => p !== prompt);
-    renderList();
-  });
-  deleteButton.innerText = 'X'
+  const deleteButton = makeButton('X', () => removeItemFromPrompts(prompt), 'deleteButton')
   promptEl.append(deleteButton, promptText);
   return promptEl;
 }
