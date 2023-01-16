@@ -30,6 +30,11 @@ function addPrompt(){
   renderList();
 }
 
+function pickTemplate(template) {
+  prompts = template;
+  renderList();
+}
+
 function makeTemplate() {
   const template = new CardTemplate(titleInput.value, null, prompts);
   titleInput.value = '';
