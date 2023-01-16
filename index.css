@@ -35,3 +35,12 @@
   height: 50px;
   width: 50px;
 }
+
+#prompt-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.prompt {
+  color: teal;
+}
