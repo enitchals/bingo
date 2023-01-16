@@ -14,12 +14,13 @@
   align-items: center;
   background-color: aquamarine;
   color: teal;
-  font-size: 30px;
+  font-size: 22px;
+  overflow-wrap: anywhere;
   padding: 5px;
   margin: 2px;
   border: 2px solid lightseagreen;
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
 }
 
 .bingoSquare--marked {
@@ -28,12 +29,13 @@
   align-items: center;
   background-color: teal;
   color: aquamarine;
-  font-size: 30px;
+  font-size: 22px;
+  overflow-wrap: anywhere;
   padding: 5px;
   margin: 2px;
   border: 2px solid lightseagreen;
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
 }
 
 #prompt-list {
@@ -42,5 +44,21 @@
 }
 
 .prompt {
-  color: teal;
+  color: black;
+  display: flex;
+  flex-direction: row;
+}
+
+.prompt > li {
+  margin-left: 30px;
+}
+
+.deleteButton {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  padding: 0;
 }
