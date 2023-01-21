@@ -12,17 +12,20 @@
   <section class="sidebar">
     <div>
       <input id="prompt-input" type="text" placeholder="add custom prompt"/>
-      <button id="add" onclick="addPrompt()">Add</button>
+      <button id="add">Add</button>
     </div>
-    <div class="">
-      <button id="reset" onclick="resetList()">Reset List</button>
-      <button id="makeTemplate" onclick="makeCard()">Make Card</button>
+    <div>
+      <button id="reset">Reset List</button>
+      <button id="makeCard">Make Card</button>
     </div>
     <section id="options-list"></section>
   </section>
   <section id="preview" class="card-container"></section>
   <script src="bingo.js"></script>
   <script src="prompts.js"></script>
+  <script src="helpers.js"></script>
+  <script src="querySelectors.js"></script>
+  <script src="bingoGame.js"></script>
   <script src="zoomBingo.js"></script>
 </body>
 </html>

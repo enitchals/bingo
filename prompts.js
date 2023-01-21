@@ -1,32 +1,7 @@
-const year2023 = [
-  "51st state",
-  "Aliens confirmed",
-  "Biden impeached",
-  "boat gets stuck",
-  "Civil unrest",
-  "congressional brawl",
-  "Congressperson removed from office",
-  "Elon runs for office",
-  "Federal legalization of pot",
-  "Federal min wage increase",
-  "Gas under $3",
-  "government shutdown",
-  "Heat wave of 125°+",
-  "major labor strike",
-  "National protests",
-  "New pandemic",
-  "nukes used",
-  "President Harris",
-  "Putin dies",
-  "SCOTUS vacancy",
-  "stock market crash",
-  "Trump perp walk",
-  "Twitter bankruptcy",
-  "Volcano erupts"
-];
+const nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99"]
 
 const zoomMeeting = [
-  "A/V difficulties",
+  "a/v difficulties",
   "action item",
   "bandwidth",
   "bottom line",
@@ -43,7 +18,7 @@ const zoomMeeting = [
   "for the record",
   "game plan",
   "give it another minute",
-  "Happy ____day",
+  "happy ____day",
   "hard stop",
   "hit the ground running",
   "it is what it is",
@@ -96,10 +71,6 @@ const CSPAN = [
 ]
 
 const promptOptions = [
-  {
-    array: year2023,
-    buttonText: 'Year 2023'
-  },
   {
     array: zoomMeeting,
     buttonText: 'Zoom Meeting'

@@ -59,19 +59,3 @@ class FreeSpace extends Square {
     this.marked = true;
   }
 }
-
-class CardTemplate extends Card {
-  constructor(defaultTitle = 'bingo card', freeSpaceText = '', promptSet = []){
-    super();
-    this.defaultTitle = defaultTitle;
-    this.defaultFreeSpace = freeSpaceText;
-    this.promptSet = promptSet;
-  }
-  generateNewCard(title, freeSpaceText){
-    this.promptSet.sort(() => (Math.random() > .5) ? 1 : -1);
-    return new Card(
-      title || this.defaultTitle,
-      freeSpaceText || this.defaultFreeSpace,
-      this.promptSet.slice(0,24));
-  }
-}
