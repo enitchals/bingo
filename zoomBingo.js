@@ -2,10 +2,10 @@ const titleInput = document.querySelector('#prompt-input');
 const promptInput = document.querySelector('#prompt-input');
 const templateList = document.querySelector('#existingTemplates');
 const cardPreviewElement = document.querySelector('#preview');
-const list = document.querySelector('#prompt-list');
+const listContainer = document.querySelector('#options-list');
 const makeTemplateButton = document.querySelector('#makeTemplate');
 
-export const makeButton = (text, callback, buttonClass) => {
+const makeButton = (text, callback, buttonClass) => {
   const button = document.createElement('button');
   button.innerText = text;
   button.addEventListener('click', callback);
@@ -13,12 +13,18 @@ export const makeButton = (text, callback, buttonClass) => {
   return button;
 }
 
-templateList.append(...promptOptions.map(option => makeButton(option.buttonText, () => pickTemplate(option.array))))
-
-let prompts = [];
+let prompts = zoomMeeting;
 
 const renderList = () => {
-  list.replaceChildren(...prompts.map(renderPrompt));
+  const list = document.createElement('section');
+  list.className = 'options-list'
+  list.append(...prompts.map(renderPrompt));
+  listContainer.replaceChildren(list);
+}
+
+const resetList = () => {
+  prompts = zoomMeeting;
+  renderList();
 }
 
 const removeItemFromPrompts = (item) => {
@@ -28,8 +34,8 @@ const removeItemFromPrompts = (item) => {
 
 const renderPrompt = (prompt) => {
   const promptEl = document.createElement('section');
-  promptEl.className = 'prompt';
-  const promptText = document.createElement('li');
+  promptEl.className = 'option';
+  const promptText = document.createElement('div');
   promptText.innerText = prompt;
   const deleteButton = makeButton('X', () => removeItemFromPrompts(prompt), 'deleteButton')
   promptEl.append(deleteButton, promptText);
@@ -37,18 +43,16 @@ const renderPrompt = (prompt) => {
 }
 
 function addPrompt(){
+  if (promptInput.value === ''){
+    return;
+  }
   prompts.push(promptInput.value);
   promptInput.value = '';
   renderList();
 }
 
-function pickTemplate(template) {
-  prompts = template;
-  renderList();
-}
-
 function makeTemplate() {
-  const template = new CardTemplate(titleInput.value, null, prompts);
+  const template = new CardTemplate(null, 'FREE SPACE', prompts);
   titleInput.value = '';
   makeTemplateButton.innerText = 'New Card';
   return template;
@@ -59,3 +63,6 @@ function makeCard(){
   const card = temp.generateNewCard();
   cardPreviewElement.replaceChildren(card.render());
 }
+
+renderList();
+makeCard();

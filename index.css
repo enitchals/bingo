@@ -11,8 +11,8 @@
 .bingoSquare {
   display: flex;
   justify-content: center;
+  text-align: center;
   align-items: center;
-  background-color: aquamarine;
   color: teal;
   font-size: 22px;
   overflow-wrap: anywhere;
@@ -26,11 +26,12 @@
 .bingoSquare--marked {
   display: flex;
   justify-content: center;
+  text-align: center;
   align-items: center;
   background-color: teal;
-  color: aquamarine;
+  color: white;
   font-size: 22px;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   padding: 5px;
   margin: 2px;
   border: 2px solid lightseagreen;
@@ -49,8 +50,12 @@
   flex-direction: row;
 }
 
-.prompt > li {
+.prompt-list > li {
   margin-left: 30px;
+  margin-bottom:10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .deleteButton {
@@ -61,4 +66,5 @@
   width: 20px;
   border-radius: 10px;
   padding: 0;
+  margin-right: 10px;
 }

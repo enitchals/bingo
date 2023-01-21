@@ -1,0 +1,36 @@
+.container{
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 250px;
+  max-height: 700px;
+}
+
+.options-list{
+  max-height: 500px;
+  border: 2px solid black;
+  border-radius: 4px;
+  margin-top: 20px;
+  padding: 3px;
+  overflow: scroll;
+}
+
+.option{
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-content: top;
+}
+
+.card-container{
+  flex-grow: 1;
+}
+
+
+
+style="height:120px;width:120px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
