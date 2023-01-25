@@ -6,6 +6,30 @@ class Card {
       .slice(0,12)
       .concat([new FreeSpace(freeSpaceText)])
       .concat(squares.slice(12,24));
+    this.checkForBingo = this.checkForBingo.bind(this);
+  }
+
+  checkForBingo(){
+    const markedSquares = this.squares.reduce((acc, curr, i) => {return curr.marked ? acc.concat([i]) : acc},[]);
+    let bingo = false;
+    console.log(markedSquares);
+    // check for a row bingo
+    const rowCheck = markedSquares.map(sq => sq % 5);
+    const rowEval = rowCheck.reduce((acc, cur) => {
+      if (acc[cur]){
+        acc[cur] += 1;
+      } else {
+        acc[cur] = 1;
+      }
+      return acc;
+    }, {})
+    console.log(rowEval);
+    if (Object.values(rowEval).includes(5)){
+      window.alert('BINGO!')
+    };
+
+
+    return bingo;
   }
 
   render(){
@@ -18,6 +42,7 @@ class Card {
       squareElements.slice(20)
     ];
     const card = document.createElement('section');
+    card.addEventListener('click', this.checkForBingo)
     card.className = 'bingoCard';
     columns.forEach(col => {
       const colElement = document.createElement('section');
