@@ -27,7 +27,9 @@ class BingoGame {
     const list = document.createElement('section');
     list.className = 'options-list'
     list.append(...this.prompts.map(this.renderPrompt));
-    listContainer.replaceChildren(list);
+    const count = document.createElement('span');
+    count.append('You have ' + this.prompts.length + ' prompts:')
+    listContainer.replaceChildren(count, list);
   }
   resetList = () => {
     this.prompts = this.initialPrompts;
@@ -46,6 +48,10 @@ class BingoGame {
     this.renderList();
   }
   generateNewCard(){
+    if (this.prompts.length < 24){
+      window.alert("You need at least 24 squares on a bingo card! Add more or reset the list.");
+      return;
+    }
     this.prompts.sort(() => (Math.random() > .5) ? 1 : -1);
     const card = new Card(
       this.title,
