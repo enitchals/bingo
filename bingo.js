@@ -10,7 +10,7 @@ class Card {
   }
 
   bingo(){
-    window.alert('bingo!')
+    setTimeout(() => window.alert('bingo!'), 500);
   }
 
   checkForBingo(){
@@ -49,6 +49,27 @@ class Card {
     if (Object.values(columnEval).includes(5)){
       this.bingo();
     }
+
+    // check for diagonals
+    console.log(markedSquares)
+    if (
+      markedSquares.includes(0) &&
+      markedSquares.includes(6) &&
+      markedSquares.includes(12) &&
+      markedSquares.includes(18) &&
+      markedSquares.includes(24)
+      ) {
+        this.bingo();
+      }
+      if (
+        markedSquares.includes(4) &&
+        markedSquares.includes(8) &&
+        markedSquares.includes(12) &&
+        markedSquares.includes(16) &&
+        markedSquares.includes(20)
+      ) {
+        this.bingo();
+      }
   }
 
   render(){
