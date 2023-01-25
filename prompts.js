@@ -53,14 +53,6 @@ const zoomMeeting = [
   "you're not muted"
 ];
 
-const cats = [
-  ""
-];
-
-const news = [
-  "breaking news",
-]
-
 const CSPAN = [
   "someone looks into the camera",
   "crossing the aisle",
