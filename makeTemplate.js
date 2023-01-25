@@ -6,42 +6,42 @@
 //   return button;
 // }
 
-// templateList.append(...promptOptions.map(option => makeButton(option.buttonText, () => pickTemplate(option.array))))
+// templateList.append(...spaceOptions.map(option => makeButton(option.buttonText, () => pickTemplate(option.array))))
 
-// let prompts = [];
+// let spaces = [];
 
 // const renderList = () => {
-//   list.replaceChildren(...prompts.map(renderPrompt));
+//   list.replaceChildren(...spaces.map(renderSpace));
 // }
 
-// const removeItemFromPrompts = (item) => {
-//   prompts = prompts.filter(p => p !== item);
+// const removeItemFromSpaces = (item) => {
+//   spaces = spaces.filter(p => p !== item);
 //   renderList();
 // }
 
-// const renderPrompt = (prompt) => {
-//   const promptEl = document.createElement('section');
-//   promptEl.className = 'prompt';
-//   const promptText = document.createElement('li');
-//   promptText.innerText = prompt;
-//   const deleteButton = makeButton('X', () => removeItemFromPrompts(prompt), 'deleteButton')
-//   promptEl.append(deleteButton, promptText);
-//   return promptEl;
+// const renderSpace = (space) => {
+//   const spaceEl = document.createElement('section');
+//   spaceEl.className = 'space';
+//   const spaceText = document.createElement('li');
+//   spaceText.innerText = space;
+//   const deleteButton = makeButton('X', () => removeItemFromSpaces(space), 'deleteButton')
+//   spaceEl.append(deleteButton, spaceText);
+//   return spaceEl;
 // }
 
-// function addPrompt(){
-//   prompts.push(promptInput.value);
-//   promptInput.value = '';
+// function addSpace(){
+//   spaces.push(spaceInput.value);
+//   spaceInput.value = '';
 //   renderList();
 // }
 
 // function pickTemplate(template) {
-//   prompts = template;
+//   spaces = template;
 //   renderList();
 // }
 
 // function makeTemplate() {
-//   const template = new CardTemplate(titleInput.value, null, prompts);
+//   const template = new CardTemplate(titleInput.value, null, spaces);
 //   titleInput.value = '';
 //   makeTemplateButton.innerText = 'New Card';
 //   return template;

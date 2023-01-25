@@ -62,7 +62,7 @@ const CSPAN = [
   "roll call vote"
 ]
 
-const promptOptions = [
+const spaceOptions = [
   {
     array: zoomMeeting,
     buttonText: 'Zoom Meeting'

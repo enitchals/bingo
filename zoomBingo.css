@@ -1,6 +1,8 @@
 .container{
   display: flex;
   flex-direction: row;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .sidebar{
@@ -32,15 +34,16 @@
 
 .card-container{
   flex-grow: 1;
+  margin-left: 30px;
 }
 
-.prompt-input-row{
+.space-input-row{
   width: 100%;
   display: flex;
   flex-direction: row;
 }
 
-#prompt-input{
+#space-input{
   flex-grow: 1;
   margin-right: 10px;
 }
@@ -56,4 +59,11 @@
   margin-right: 10px;
 }
 
-#makeCard{}
+@media(width < 900px){
+/* put controls BELOW card */
+}
+
+@media(width < 650px){
+  /* fit squares to view width */
+
+}

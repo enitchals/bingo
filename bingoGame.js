@@ -1,62 +1,62 @@
 class BingoGame {
-  constructor(title = 'Bingo', freeSpaceText = 'FREE SPACE', prompts = nums || []){
+  constructor(title = 'Bingo', freeSpaceText = 'FREE SPACE', spaces = nums || []){
     this.title = title;
     this.freeSpaceText = freeSpaceText;
-    this.prompts = prompts;
-    this.initialPrompts = prompts;
+    this.spaces = spaces;
+    this.initialSpaces = spaces;
     this.generateNewCard = this.generateNewCard.bind(this);
     this.resetList = this.resetList.bind(this);
-    this.addPrompt = this.addPrompt.bind(this);
+    this.addSpace = this.addSpace.bind(this);
   }
   bindButtons = () => {
     makeCardButton.addEventListener('click', this.generateNewCard);
     resetButton.addEventListener('click', this.resetList);
-    addButton.addEventListener('click', this.addPrompt);
+    addButton.addEventListener('click', this.addSpace);
   }
-  renderPrompt = (prompt) => {
-    const promptEl = document.createElement('section');
-    promptEl.className = 'option';
-    const promptText = document.createElement('div');
-    promptText.innerText = prompt;
-    const deleteButton = makeButton('X', () => this.removeItemFromPrompts(prompt), 'deleteButton')
-    promptEl.append(deleteButton, promptText);
-    return promptEl;
+  renderSpace = (space) => {
+    const spaceEl = document.createElement('section');
+    spaceEl.className = 'option';
+    const spaceText = document.createElement('div');
+    spaceText.innerText = space;
+    const deleteButton = makeButton('X', () => this.removeItemFromSpaces(space), 'deleteButton')
+    spaceEl.append(deleteButton, spaceText);
+    return spaceEl;
   }
   renderList = () => {
-    this.prompts.sort();
+    this.spaces.sort();
     const list = document.createElement('section');
     list.className = 'options-list'
-    list.append(...this.prompts.map(this.renderPrompt));
+    list.append(...this.spaces.map(this.renderSpace));
     const count = document.createElement('span');
-    count.append('You have ' + this.prompts.length + ' prompts:')
+    count.append('You have ' + this.spaces.length + ' possible squares:')
     listContainer.replaceChildren(count, list);
   }
   resetList = () => {
-    this.prompts = this.initialPrompts;
+    this.spaces = this.initialSpaces;
     this.renderList();
   }
-  addPrompt(){
-    if (promptInput.value === ''){
+  addSpace(){
+    if (spaceInput.value === ''){
       return;
     }
-    this.prompts.push(promptInput.value);
-    promptInput.value = '';
+    this.spaces.push(spaceInput.value);
+    spaceInput.value = '';
     this.renderList();
   }
-  removeItemFromPrompts = (item) => {
-    this.prompts = this.prompts.filter(p => p !== item);
+  removeItemFromSpaces = (item) => {
+    this.spaces = this.spaces.filter(p => p !== item);
     this.renderList();
   }
   generateNewCard(){
-    if (this.prompts.length < 24){
-      window.alert("You need at least 24 squares on a bingo card! Add more or reset the list.");
+    if (this.spaces.length < 24){
+      window.alert("You need at least 24 squares on a bingo card! Add more possibilities or reset the list.");
       return;
     }
-    this.prompts.sort(() => (Math.random() > .5) ? 1 : -1);
+    this.spaces.sort(() => (Math.random() > .5) ? 1 : -1);
     const card = new Card(
       this.title,
       this.freeSpaceText,
-      this.prompts.slice(0,24));
+      this.spaces.slice(0,24));
     cardPreviewElement.replaceChildren(card.render());
   }
 }

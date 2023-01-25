@@ -1,5 +1,5 @@
-const titleInput = document.querySelector('#prompt-input');
-const promptInput = document.querySelector('#prompt-input');
+const titleInput = document.querySelector('#space-input');
+const spaceInput = document.querySelector('#space-input');
 const templateList = document.querySelector('#existingTemplates');
 const cardPreviewElement = document.querySelector('#preview');
 const listContainer = document.querySelector('#options-list');

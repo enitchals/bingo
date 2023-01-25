@@ -1,6 +1,6 @@
 class Card {
-  constructor(title = 'bingo card', freeSpaceText = '', prompts = []){
-    const squares = prompts.map(p => new Square(p));
+  constructor(title = 'bingo card', freeSpaceText = '', spaces = []){
+    const squares = spaces.map(p => new Square(p));
     this.title = title;
     this.squares = squares
       .slice(0,12)
