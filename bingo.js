@@ -9,11 +9,14 @@ class Card {
     this.checkForBingo = this.checkForBingo.bind(this);
   }
 
+  bingo(){
+    window.alert('bingo!')
+  }
+
   checkForBingo(){
     const markedSquares = this.squares.reduce((acc, curr, i) => {return curr.marked ? acc.concat([i]) : acc},[]);
-    let bingo = false;
-    console.log(markedSquares);
-    // check for a row bingo
+
+    // check for a row
     const rowCheck = markedSquares.map(sq => sq % 5);
     const rowEval = rowCheck.reduce((acc, cur) => {
       if (acc[cur]){
@@ -23,13 +26,29 @@ class Card {
       }
       return acc;
     }, {})
-    console.log(rowEval);
     if (Object.values(rowEval).includes(5)){
-      window.alert('BINGO!')
+      this.bingo();
     };
 
-
-    return bingo;
+    // check for a column bingo
+    const columnEval = markedSquares.reduce((acc, cur)=> {
+        if (cur < 5) {
+          acc.b += 1
+        } else if (cur < 10) {
+          acc.i += 1;
+        } else if (cur < 15) {
+          acc.n += 1;
+        } else if (cur < 20) {
+          acc.g += 1;
+        } else if (cur < 25) {
+          acc.o += 1;
+        }
+      return acc;
+    }, {b:0,i:0,n:0,g:0,o:0})
+    console.log(columnEval);
+    if (Object.values(columnEval).includes(5)){
+      this.bingo();
+    }
   }
 
   render(){
