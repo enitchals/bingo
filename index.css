@@ -6,7 +6,7 @@
 .bingoColumn {
   display: flex;
   flex-direction: column;
-  background-color: paleturquoise;
+  background-color: aliceblue;
 }
 
 .bingoSquare {
