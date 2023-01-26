@@ -83,6 +83,14 @@
 }
 
 @media(width < 650px){
+
+  .controls{
+    flex-direction: column;
+  }
+  .buttons-row{
+    margin-left: 0;
+    margin-top: 10px;
+  }
   .container{
     margin: 0;
     padding: 0;
