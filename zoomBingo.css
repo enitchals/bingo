@@ -60,7 +60,6 @@
 }
 
 @media(width < 900px){
-/* put controls BELOW card */
   .container{
     flex-direction: column-reverse;
     align-items: center;
@@ -84,5 +83,31 @@
 }
 
 @media(width < 650px){
-  /* fit squares to view width */
+  .container{
+    margin: 0;
+    padding: 0;
+  }
+  .bingoCard{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  .card-container{
+    padding: 0;
+    margin: 0;
+    margin-top: 30px;
+  }
+  .bingoColumn{
+  }
+  .bingoSquare{
+    width: 13vw;
+    height: 13vw;
+    font-size: 12px;
+  }
+  .bingoSquare--marked{
+    width: 13vw;
+    height: 13vw;
+    font-size: 12px;
+  }
 }
