@@ -61,9 +61,28 @@
 
 @media(width < 900px){
 /* put controls BELOW card */
+  .container{
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .controls{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    padding: 0 100px;
+  }
+  .buttons-row{
+    margin-top: 0;
+    margin-left: 40px
+  }
+  .options-list{
+    width: 250px;
+  }
+  .sidebar{
+    align-items: center;
+  }
 }
 
 @media(width < 650px){
   /* fit squares to view width */
-
 }
