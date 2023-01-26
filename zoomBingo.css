@@ -66,8 +66,6 @@
   }
   .controls{
     margin-top: 20px;
-    display: flex;
-    flex-direction: row;
     padding: 0 100px;
   }
   .buttons-row{
@@ -83,10 +81,6 @@
 }
 
 @media(width < 650px){
-
-  .controls{
-    flex-direction: column;
-  }
   .buttons-row{
     margin-left: 0;
     margin-top: 10px;
