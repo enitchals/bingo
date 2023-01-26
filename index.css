@@ -6,6 +6,7 @@
 .bingoColumn {
   display: flex;
   flex-direction: column;
+  background-color: paleturquoise;
 }
 
 .bingoSquare {
@@ -68,4 +69,113 @@
   border-radius: 10px;
   padding: 0;
   margin-right: 10px;
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+  max-height: 700px;
+}
+
+#options-list {
+  margin-top: 10px;
+}
+
+.options-list{
+  max-height: 500px;
+  border: 2px solid black;
+  border-radius: 4px;
+  margin-top: 5px;
+  padding: 3px;
+  overflow: scroll;
+}
+
+.option{
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-content: top;
+}
+
+.card-container{
+  flex-grow: 1;
+  margin-left: 30px;
+}
+
+.space-input-row{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#space-input{
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.buttons-row{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#reset{
+  margin-right: 10px;
+}
+
+@media(width < 900px){
+  .container{
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .controls{
+    margin-top: 20px;
+    padding: 0 100px;
+  }
+  .options-list{
+    width: 250px;
+  }
+  .sidebar{
+    align-items: center;
+  }
+}
+
+@media(width < 650px){
+  .buttons-row{
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .container{
+    margin: 0;
+    padding: 0;
+  }
+  .bingoCard{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  .card-container{
+    padding: 0;
+    margin: 0;
+    margin-top: 30px;
+  }
+  .bingoSquare{
+    width: 13vw;
+    height: 13vw;
+    font-size: 3vi;
+  }
+  .bingoSquare--marked{
+    width: 13vw;
+    height: 13vw;
+    font-size: 3vi;
+  }
 }
