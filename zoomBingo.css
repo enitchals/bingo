@@ -98,12 +98,10 @@
     margin: 0;
     margin-top: 30px;
   }
-  .bingoColumn{
-  }
   .bingoSquare{
     width: 13vw;
     height: 13vw;
-    font-size: 12px;
+    font-size: 3vi;
   }
   .bingoSquare--marked{
     width: 13vw;
