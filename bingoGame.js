@@ -3,7 +3,7 @@ class BingoGame {
     this.title = title;
     this.freeSpaceText = freeSpaceText;
     this.spaces = spaces;
-    this.initialSpaces = spaces;
+    this.initialSpaces = spaces.slice();
     this.generateNewCard = this.generateNewCard.bind(this);
     this.resetList = this.resetList.bind(this);
     this.addSpace = this.addSpace.bind(this);
@@ -32,7 +32,7 @@ class BingoGame {
     listContainer.replaceChildren(count, list);
   }
   resetList = () => {
-    this.spaces = this.initialSpaces;
+    this.spaces = this.initialSpaces.slice();
     this.renderList();
   }
   addSpace(){
