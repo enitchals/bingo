@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './BingoCard.css'
 import { useParams } from 'react-router-dom'
 import { squaresData } from '../data'
-import { getRandomSquares } from '../helpers'
+import { checkForBingo, getRandomSquares } from '../helpers'
 
 function Square({text, checked, toggle}) {
   return (
@@ -50,6 +50,13 @@ function BingoCard() {
     }
 
   }, [category, id])
+
+  useEffect(() => {
+    console.log(squares, checked)
+    if (squares && checkForBingo(squares, checked)) {
+      setTimeout(() => window.alert('you win!'), 500);
+    }
+  }, [checked])
 
   const toggleSquare = (square) => {
     if (square === 'free space') return;
