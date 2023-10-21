@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './BingoCard.css'
 import { useParams } from 'react-router-dom'
 import { squaresData } from '../data'
+import { getRandomSquares } from '../helpers'
 
 function Square({text, checked, toggle}) {
   return (
@@ -38,7 +39,7 @@ function BingoCard() {
     } else {
       setError(null)
       // when there's a backend, this will be a query
-      setSquares(categorySquares.slice(0,12).concat('free space').concat(categorySquares.slice(12,24)));
+      setSquares(getRandomSquares(squaresData[category]));
     }
 
   }, [category, id])
