@@ -29,9 +29,16 @@ function BingoCard() {
   const [error, setError] = useState(null)
 
   const {category, id} = useParams();
+
+  console.log(category)
+
   useEffect(() => {
     if (id){
       // when I add the backend, this is where I'll fetch cards by id and use setSquares and setChecked
+    }
+    if (!category){
+      setSquares(getRandomSquares(squaresData['zoom']))
+      return;
     }
     const categorySquares = squaresData[category];
     if (!categorySquares){

@@ -6,6 +6,7 @@ function App() {
 
   return (
     <Routes>
+      <Route path="/" element={<BingoCard/>}/>
       <Route path="/:category" element={<BingoCard/>} />
       <Route path="/:category/:id" element={<BingoCard/>} />
     </Routes>
