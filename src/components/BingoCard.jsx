@@ -1,59 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './BingoCard.css'
-
-const zoomSquares = [
-  "a/v trouble",
-  "action item",
-  "bandwidth",
-  "bottom line",
-  "breakout rooms",
-  "can you see my screen?",
-  "cat on camera",
-  "circle back",
-  "coffee shop noises",
-  "deep dive",
-  "dog on camera",
-  "drill down",
-  "ducks in a row",
-  "follow up",
-  "for the record",
-  "game plan",
-  "give it another minute",
-  "happy ____day",
-  "hard stop",
-  "hit the ground running",
-  "it is what it is",
-  "kids on camera",
-  "let me share my screen",
-  "leverage",
-  "low-hanging fruit",
-  "mission critical",
-  "moving parts",
-  "next quarter",
-  "next year",
-  "no-brainer",
-  "on my radar",
-  "out-of-the-box",
-  "pain points",
-  "pivot",
-  "put a pin in that",
-  "reinvent the wheel",
-  "scalable",
-  "slide deck",
-  "someone drinks coffee",
-  "synergy",
-  "take this offline",
-  "tech debt",
-  "this quarter",
-  "unpack that",
-  "value add",
-  "win-win",
-  "wrong window shared",
-  "you're muted",
-  "you're not muted"
-]
-
-const dummyData = zoomSquares.slice(0,12).concat('free space').concat(zoomSquares.slice(12,24))
+import { useParams } from 'react-router-dom'
+import { squaresData } from '../data'
 
 function Square({text, checked, toggle}) {
   return (
@@ -63,12 +11,37 @@ function Square({text, checked, toggle}) {
 
 // someday i'll add a backend
 // when I do, the bingocard will access params like this:
-// /card/category          gets the set of possible squares for a category
-// /card/category/:id      gets a card by id
+// /card/:category          gets the set of possible squares for a category
+// /card/:category/:id      gets a card by id
+
+// thoughts about individual cards
+// records properties: squares, checked
+// additional properties: name
+// make sure the id is a uuid so links aren't guessable
+
+// thoughts about categories in db
+// record properties: category name, array of squares
 
 function BingoCard() {
-  const [squares, setSquares] = useState(dummyData)
+  const [squares, setSquares] = useState(null)
   const [checked, setChecked] = useState(['free space'])
+  const [error, setError] = useState(null)
+
+  const {category, id} = useParams();
+  useEffect(() => {
+    if (id){
+      // when I add the backend, this is where I'll fetch cards by id and use setSquares and setChecked
+    }
+    const categorySquares = squaresData[category];
+    if (!categorySquares){
+      setError('No such category!')
+    } else {
+      setError(null)
+      // when there's a backend, this will be a query
+      setSquares(categorySquares.slice(0,12).concat('free space').concat(categorySquares.slice(12,24)));
+    }
+
+  }, [category, id])
 
   const toggleSquare = (square) => {
     if (square === 'free space') return;
@@ -83,6 +56,18 @@ function BingoCard() {
       default:
         setChecked(checked.slice(0, index).concat(checked.slice(index+1)))
     }
+  }
+
+  if (error) {
+    return (
+      <div>{error}</div>
+    )
+  }
+
+  if (!squares){
+    return (
+      <div>Loading . . .</div>
+    )
   }
 
   return (
