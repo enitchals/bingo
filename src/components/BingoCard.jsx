@@ -31,6 +31,12 @@ function BingoCard() {
   const {category, id} = useParams();
 
   useEffect(() => {
+    const localCard = JSON.parse(localStorage.getItem('bingo-card'))
+    if (localCard){
+      setSquares(localCard.squares)
+      setChecked(localCard.checked)
+      return;
+    }
     if (id){
       // when I add the backend, this is where I'll fetch cards by id and use setSquares and setChecked
     }
@@ -58,16 +64,19 @@ function BingoCard() {
   const toggleSquare = (square) => {
     if (square === 'free space') return;
     const index = checked.indexOf(square)
+    let newChecked;
     switch(index){
       case -1:
-        setChecked(checked.concat(square));
-        return;
+        newChecked = (checked.concat(square));
+        break;
       case 0:
-        setChecked(checked.slice(1));
-        return;
+        newChecked = (checked.slice(1));
+        break;
       default:
-        setChecked(checked.slice(0, index).concat(checked.slice(index+1)))
+        newChecked = (checked.slice(0, index).concat(checked.slice(index+1)))
     }
+    setChecked(newChecked)
+    localStorage.setItem('bingo-card', JSON.stringify({squares, checked: newChecked}))
   }
 
   if (error) {
