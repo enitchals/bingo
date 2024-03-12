@@ -30,8 +30,6 @@ function BingoCard() {
 
   const {category, id} = useParams();
 
-  console.log(category)
-
   useEffect(() => {
     if (id){
       // when I add the backend, this is where I'll fetch cards by id and use setSquares and setChecked
@@ -52,7 +50,6 @@ function BingoCard() {
   }, [category, id])
 
   useEffect(() => {
-    console.log(squares, checked)
     if (squares && checkForBingo(squares, checked)) {
       setTimeout(() => window.alert('you win!'), 500);
     }
