@@ -3,6 +3,7 @@ import './BingoCard.css'
 import { useParams } from 'react-router-dom'
 import { squaresData } from '../data'
 import { checkForBingo, getRandomSquares } from '../helpers'
+import Controls from './Controls'
 
 function Square({text, checked, toggle}) {
   return (
@@ -79,6 +80,13 @@ function BingoCard() {
     localStorage.setItem('bingo-card', JSON.stringify({squares, checked: newChecked}))
   }
 
+  const newCard = () => {
+    const newBoardSquares = getRandomSquares(squaresData['zoom'])
+    setSquares(newBoardSquares)
+    setChecked(['free space'])
+    localStorage.setItem('bingo-card', JSON.stringify({squares: newBoardSquares, checked: ['free space']}))
+  }
+
   if (error) {
     return (
       <div>{error}</div>
@@ -92,9 +100,13 @@ function BingoCard() {
   }
 
   return (
-    <div className='card'>
-    {squares.map(square => <Square text={square} checked={checked.includes(square)} toggle={() => toggleSquare(square)} key={square}/>)}
-    </div>
+    <>
+      {/* move <Controls/> into <App/> when Redux enters the chat */}
+      <Controls newCard={newCard}/>
+      <div className='card'>
+      {squares.map(square => <Square text={square} checked={checked.includes(square)} toggle={() => toggleSquare(square)} key={square}/>)}
+      </div>
+    </>
   )
 }
 
