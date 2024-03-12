@@ -84,7 +84,7 @@ function BingoCard() {
     const newBoardSquares = getRandomSquares(squaresData['zoom'])
     setSquares(newBoardSquares)
     setChecked(['free space'])
-    localStorage.setItem('bingo-card', JSON.stringify({squares: newBoardSquares, checked: ['free space']}))
+    localStorage.setItem('bingo-card', null)
   }
 
   if (error) {
