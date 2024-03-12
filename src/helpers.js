@@ -11,7 +11,6 @@ export const getRandomSquares = (squareList) => {
 export const checkForBingo = (squareList, checkedList) => {
   const markedSquares = squareList.reduce((acc, curr, i) => {return checkedList.includes(curr) ? acc.concat([i]) : acc},[]);
 
-  console.log(markedSquares)
   // check for a row
   const rowCheck = markedSquares.map(sq => sq % 5);
   const rowEval = rowCheck.reduce((acc, cur) => {
@@ -41,13 +40,11 @@ export const checkForBingo = (squareList, checkedList) => {
       }
     return acc;
   }, {b:0,i:0,n:0,g:0,o:0})
-  console.log(columnEval);
   if (Object.values(columnEval).includes(5)){
     return true;
   }
 
   // check for diagonals
-  console.log(markedSquares)
   if (
     markedSquares.includes(0) &&
     markedSquares.includes(6) &&
