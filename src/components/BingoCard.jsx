@@ -32,7 +32,7 @@ function BingoCard() {
   const {category, id} = useParams();
 
   useEffect(() => {
-    const localCard = JSON.parse(localStorage.getItem('bingo-card'))
+    const localCard = JSON.parse(localStorage.getItem(`bingo-card-${category}`))
     if (localCard){
       setSquares(localCard.squares)
       setChecked(localCard.checked)
@@ -43,6 +43,12 @@ function BingoCard() {
     }
     if (!category){
       setSquares(getRandomSquares(squaresData['zoom']))
+      return;
+    }
+    if (category === 'custom'){
+      const squares = JSON.parse(localStorage.getItem('custom-bingo-prompts'))
+      console.log(squares)
+      setSquares(getRandomSquares(squares))
       return;
     }
     const categorySquares = squaresData[category];
@@ -77,7 +83,7 @@ function BingoCard() {
         newChecked = (checked.slice(0, index).concat(checked.slice(index+1)))
     }
     setChecked(newChecked)
-    localStorage.setItem('bingo-card', JSON.stringify({squares, checked: newChecked}))
+    localStorage.setItem(`bingo-card-${category}`, JSON.stringify({squares, checked: newChecked}))
   }
 
   const newCard = () => {

@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+const testingData = [
+  'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+]
+
 function Build(){
-  const [prompts, setPrompts] = useState([]);
+  const [prompts, setPrompts] = useState(testingData);
   const [newPrompt, setNewPrompt] = useState('');
 
   const handleSubmit = () => {
